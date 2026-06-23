@@ -1,8 +1,9 @@
 import express from 'express'
-import { Message } from '../controllers/chatbot.message.js';
+import { Message, getHistory } from '../controllers/chatbot.message.js';
 
 const router = express.Router();
 
 router.post("/message",Message)
+router.get("/history", getHistory)
 
 export default router

@@ -1,6 +1,10 @@
 import mongoose, { trusted } from "mongoose";
 
 const userSchema=new mongoose.Schema({
+    userAccount: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "UserAccount"
+    },
     sender:{
         type:String,
         required: true,

@@ -4,6 +4,9 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 
 import chatbotRoutes from './routes/chatbot.route.js'
+import authRoutes from './routes/auth.route.js'
+import nutritionRoutes from './routes/nutrition.route.js'
+import { protect } from './middleware/auth.middleware.js'
 
 
 const app = express()
@@ -25,7 +28,9 @@ mongoose.connect(process.env.MONGO_URL)
 
 
 //defining routes
-app.use("/bot/v1",chatbotRoutes)
+app.use("/auth/v1", authRoutes)
+app.use("/bot/v1", protect, chatbotRoutes)
+app.use("/nutrition/v1", protect, nutritionRoutes)
 
 
 app.listen(port, () => {

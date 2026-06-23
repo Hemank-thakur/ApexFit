@@ -1,6 +1,10 @@
 import mongoose from "mongoose"
 
 const botSchema=new mongoose.Schema({
+    userAccount: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "UserAccount"
+    },
     text:{
         type:String,
         required:true
